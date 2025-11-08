@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Drawing Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Name Input Modal -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <h2>🎨 Welcome to Collaborative Canvas</h2>
+            <p>Please enter your name to start drawing:</p>
+            <input type="text" id="usernameInput" placeholder="Enter your name" maxlength="20">
+            <button id="joinBtn">Join Canvas</button>
+        </div>
+    </div>
+
+    <!-- Text Input Modal -->
+    <div id="textModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>✏️ Enter Text</h2>
+            <input type="text" id="textInput" placeholder="Enter your text" maxlength="100">
+            <div style="display: flex; gap: 10px;">
+                <button id="textConfirmBtn">Add Text</button>
+                <button id="textDeleteBtn" class="delete-btn" style="display: none;">🗑️ Delete</button>
+                <button id="textCancelBtn" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <header>
+            <h1>🎨 Collaborative Drawing Canvas</h1>
+            <div class="stats">
+                <span id="userCount">Users: 0</span>
+                <span id="latency">Latency: 0ms</span>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="tool-group">
+                <label>Drawing Tools:</label>
+                <button id="brushTool" class="tool-btn active" title="Brush">
+                    <span>🖌️</span>
+                </button>
+                <button id="eraserTool" class="tool-btn" title="Eraser">
+                    <span>🧹</span>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <label>Shapes:</label>
+                <button id="lineTool" class="tool-btn" title="Line">
+                    <span>📏</span>
+                </button>
+                <button id="rectangleTool" class="tool-btn" title="Rectangle">
+                    <span>▭</span>
+                </button>
+                <button id="circleTool" class="tool-btn" title="Circle">
+                    <span>⭕</span>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <label>Text:</label>
+                <button id="textTool" class="tool-btn" title="Add Text">
+                    <span>📝</span>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <label for="colorPicker">Color:</label>
+                <input type="color" id="colorPicker" value="#000000">
+            </div>
+
+            <div class="tool-group">
+                <label for="strokeWidth">Width: <span id="widthValue">5</span></label>
+                <input type="range" id="strokeWidth" min="1" max="50" value="5">
+            </div>
+
+            <div class="tool-group">
+                <button id="undoBtn" class="action-btn" title="Undo (Global)">↶ Undo</button>
+                <button id="redoBtn" class="action-btn" title="Redo (Global)">↷ Redo</button>
+            </div>
+
+            <div class="tool-group">
+                <button id="clearBtn" class="action-btn danger" title="Clear Canvas">🗑️ Clear</button>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="mainCanvas"></canvas>
+            <canvas id="cursorCanvas"></canvas>
+        </div>
+
+        <div class="users-panel">
+            <h3>Online Users (<span id="onlineCount">0</span>)</h3>
+            <div id="usersList"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="canvas.js"></script>
+    <script src="websocket.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
