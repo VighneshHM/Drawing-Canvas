@@ -9,8 +9,5 @@ A multi-user drawing application with real-time synchronization using WebSockets
 - **Drawing Tools**: Brush and eraser with customizable colors and stroke widths
 - **Global Undo/Redo**: Works across all connected users
 - **User Cursors**: See where other users are drawing
-- **Performance Monitoring**: FPS counter and latency display
+- **Performance Monitoring**: Latency display
 - **Mobile Support**: Touch events for mobile devices
-
-## 📦 Installation
-
